@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+
+</head>
+
+<body>
+    <!-- Slider main container -->
+    <div class="swiper-container" dir="ltr">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <!-- <div class="swiper-slide"><img src='https://via.placeholder.com/150' alt=""></div> -->
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+
+
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: "auto",
+                spaceBetween: 10,
+                preloadImages: true,
+                centeredSlides: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+            // swiper.rtl = true;
+            // swiper.rtlTranslate = true;
+            // swiper.slideTo(swiper.activeIndex, 0, true);
+            // $(".swiper-container").attr('dir', 'rtl');
+            var objs = [
+                {
+                    imgUrl: 'https://via.placeholder.com/150',
+                    title: 'Card title',
+                    shortDescription: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+                    btnUrl: '#'
+                },
+                {
+                    imgUrl: 'https://via.placeholder.com/120',
+                    title: 'Card title',
+                    shortDescription: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+                    btnUrl: '#'
+                },
+                {
+                    imgUrl: 'https://via.placeholder.com/140',
+                    title: 'Card title',
+                    shortDescription: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+                    btnUrl: '#'
+                },
+                {
+                    imgUrl: 'https://via.placeholder.com/130',
+                    title: 'Card title',
+                    shortDescription: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+                    btnUrl: '#'
+                },
+            ]
+
+            function sliderInit() {
+                if ($('.swiper-slide').length > 1) {
+                    $('.swiper-button-prev, .swiper-button-next').css('display', 'block')
+
+                }
+            }
+
+            for (i = 0; i < objs.length; i++) {
+                swiper.appendSlide(`
+                <div class="swiper-slide">
+                    <div class="card">
+                         <img src= ${objs[i].imgUrl}  class="card-img-top" alt="">
+                         <div class="card-body">
+                         <h5 class="card-title">${objs[i].title}</h5>
+                         <p class="card-text">${objs[i].shortDescription}</p>
+                         <a href="${objs[i].btnUrl}" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                    </div>
+                </div>`);
+            }
+            sliderInit();
+            swiper.update(true);
+        })
+    </script>
+</body>
+
+</html>
